@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMS Test Window</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="min-h-screen flex flex-col">
+
+    <header
+        class="bg-white shadow-md py-4 px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between space-y-2 sm:space-y-0">
+        <div id="exam-title"
+            class="text-base sm:text-lg font-semibold text-gray-800 text-center sm:text-left flex-shrink-0">SSC CGL (New
+            Exam Interface) 2025 All India Mega Live Test</div>
+
+        <div class="flex items-center space-x-2 flex-grow justify-center">
+            <div id="time-left-label" class="text-lg font-semibold text-gray-600">Time Left</div>
+            <div id="time-left-display" class="text-lg font-medium text-red-600">00 : 58 : 19</div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4 flex-shrink-0">
+            <div class="flex items-center space-x-2 text-sm text-gray-600">
+                <span id="select-language-label">Select Language</span>
+                <select id="language-select" class="border border-gray-300 rounded-md px-2 py-1">
+                    <option value="en">English</option>
+                    <option value="hi">हिन्दी</option>
+                </select>
+            </div>
+            <button id="fullscreen-button"
+                class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors w-full sm:w-auto">Switch
+                Full Screen</button>
+        </div>
+    </header>
+
+    <main class="flex-grow flex flex-col md:flex-row p-4 md:p-6 space-y-4 md:space-y-0 md:space-x-6">
+        <aside class="w-full md:w-96 bg-white rounded-lg shadow-md p-4 flex flex-col space-y-4">
+            <div class="flex border-b border-gray-200">
+                <button id="symbols-tab"
+                    class="py-2 px-4 text-sm font-medium text-blue-600 border-b-2 border-blue-600 focus:outline-none flex-grow">SYMBOLS</button>
+                <button id="instructions-tab"
+                    class="py-2 px-4 text-sm font-medium text-gray-600 hover:text-blue-600 focus:outline-none flex-grow">INSTRUCTIONS</button>
+            </div>
+
+            <div id="part-navigation"
+                class="flex space-x-2 justify-start overflow-x-auto whitespace-nowrap pb-2 scrollbar-permanent-x relative">
+                <button id="part-a-button"
+                    class="part-button bg-green-500 text-white px-4 py-2 rounded-md text-sm font-medium flex-shrink-0">PART-A</button>
+                <button id="part-b-button"
+                    class="part-button bg-gray-200 text-gray-700 px-4 py-2 rounded-md text-sm font-medium flex-shrink-0">PART-B</button>
+                <button id="part-c-button"
+                    class="part-button bg-gray-200 text-gray-700 px-4 py-2 rounded-md text-sm font-medium flex-shrink-0">PART-C</button>
+                <button class="part-button bg-gray-200 text-gray-700 px-4 py-2 rounded-md text-sm font-medium flex-shrink-0">PART-D</button>
+                <button class="part-button bg-gray-200 text-gray-700 px-4 py-2 rounded-md text-sm font-medium flex-shrink-0">PART-E</button>
+                <button class="part-button bg-gray-200 text-gray-700 px-4 py-2 rounded-md text-sm font-medium flex-shrink-0">PART-F</button>
+            </div>
+
+            <div>
+                <h3 id="reasoning-section-title" class="text-md font-semibold text-gray-700 mb-3">General Intelligence
+                    and Reasoning</h3>
+                <div id="question-palette-container" class="grid grid-cols-4 sm:grid-cols-5 gap-2">
+                </div>
+            </div>
+
+            <div class="mt-auto">
+                <h3 id="analysis-section-title" class="text-md font-semibold text-gray-700 mb-2">PART-A Analysis</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white border border-gray-200 rounded-lg">
+                        <tbody>
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-2 px-3 border-b text-sm text-gray-600" id="answered-label">Answered</td>
+                                <td class="py-2 px-3 border-b text-right">
+                                    <span id="total-answered-display" class="analysis-count-box answered">0</span>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-2 px-3 border-b text-sm text-gray-600" id="not-answered-label">Not
+                                    Answered</td>
+                                <td class="py-2 px-3 border-b text-right">
+                                    <span id="total-not-answered-display"
+                                        class="analysis-count-box not-answered">0</span>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-2 px-3 border-b text-sm text-gray-600" id="visited-label">Visited</td>
+                                <td class="py-2 px-3 border-b text-right">
+                                    <span id="total-visited-display"
+                                        class="analysis-count-box marked-for-review">0</span>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-2 px-3 border-b text-sm text-gray-600" id="not-visited-label">Not Visited
+                                </td>
+                                <td class="py-2 px-3 border-b text-right">
+                                    <span id="total-not-visited-display" class="analysis-count-box not-visited">0</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </aside>
+
+        <section class="flex-grow bg-white rounded-lg shadow-md p-4 sm:p-6 relative">
+            <div id="warning-time-display" class="text-center text-lg font-bold mb-4 hidden">
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center justify-between mb-4 sm:mb-6 space-y-2 sm:space-y-0">
+                <h2 id="question-number-display" class="text-lg sm:text-xl font-bold text-gray-800">Question No. 1</h2>
+                <div class="flex flex-wrap justify-center sm:justify-end gap-2 sm:space-x-3">
+                    <button id="mark-review-next-top-button"
+                        class="bg-blue-500 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-md text-xs sm:text-sm font-medium hover:bg-blue-600 transition-colors">Mark
+                        for Review & Next</button>
+                    <button id="save-next-top-button"
+                        class="bg-blue-500 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-md text-xs sm:text-sm font-medium hover:bg-blue-600 transition-colors">Save
+                        & Next</button>
+                    <button id="submit-test-button"
+                        class="bg-blue-500 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-md text-xs sm:text-sm font-medium hover:bg-blue-600 transition-colors">Submit
+                        Test</button>
+                </div>
+                <div class="text-center sm:text-right">
+                    <p class="text-sm sm:text-base font-semibold text-gray-800">
+                        Total Questions Answered: <span class="bg-yellow-300 text-black px-1 rounded header-total-answered-count">0</span>
+                    </p>
+                    <p class="text-lg sm:text-xl font-bold">
+                        <span class="text-blue-600">Last</span>
+                        <span class="text-red-600"> 55</span>
+                        <span class="text-blue-600">Minutes</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="border border-gray-200 rounded-lg p-3 sm:p-4 mb-4 sm:mb-6 min-h-[150px]">
+                <p id="question-text" class="text-gray-800 text-base sm:text-lg mb-4">Which of the following is the
+                    capital of France?</p>
+                <div id="question-image-container"
+                    class="w-full max-w-[192px] h-auto bg-gray-100 flex items-center justify-center rounded-md mb-4 hidden mx-auto">
+                </div>
+
+                <div id="options-container" class="space-y-2 sm:space-y-3">
+                </div>
+            </div>
+
+            <div
+                class="relative sm:absolute bottom-4 left-4 right-4 sm:left-6 sm:right-6 flex flex-col sm:flex-row justify-between space-y-2 sm:space-y-0 sm:space-x-3">
+
+                <div class="flex flex-wrap justify-center sm:justify-start gap-2 sm:space-x-3">
+                    <button id="previous-button"
+                        class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm sm:text-base font-medium transition-colors flex-grow sm:flex-grow-0">Previous</button>
+                    <button id="mark-for-review-button"
+                        class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm sm:text-base font-medium transition-colors flex-grow sm:flex-grow-0">
+                        Mark for Review</button>
+                    </button>
+
+                    <button id="unmark-review-button"
+                        class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm sm:text-base font-medium transition-colors flex-grow sm:flex-grow-0">Unmark
+                        Review</button>
+                </div>
+
+                <button id="save-next-bottom-button"
+                    class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm sm:text-base font-medium transition-colors w-full sm:w-auto">
+                    Save & Next
+                </button>
+            </div>
+
+        </section>
+    </main>
+
+    <div id="instructionsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('instructionsModal')">&times;</span>
+            <h3 id="instructions-modal-title" class="text-xl font-bold text-gray-800 mb-4">Instructions</h3>
+            <p id="instructions-modal-text" class="text-gray-700 mb-4">The different symbols used in the next pages are
+                shown below. Please go through them and understand their meaning before you start the test.</p>
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white border border-gray-200 rounded-lg">
+                    <thead>
+                        <tr class="bg-gray-100 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider">
+                            <th id="symbol-header" class="py-3 px-4 border-b">Symbol</th>
+                            <th id="description-header" class="py-3 px-4 border-b">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="hover:bg-gray-50">
+                            <td class="py-3 px-4 border-b text-center">
+                                <div
+                                    class="w-6 h-6 bg-gray-200 rounded-full flex items-center justify-center text-xs font-bold text-gray-700">
+                                </div>
+                            </td>
+                            <td class="py-3 px-4 border-b text-gray-700" data-lang-key="option_not_chosen">Option Not
+                                chosen</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="py-3 px-4 border-b text-center">
+                                <div
+                                    class="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center text-xs font-bold text-white">
+                                    12</div>
+                            </td>
+                            <td class="py-3 px-4 border-b text-gray-700" data-lang-key="q_blue_desc">Question number
+                                shown in blue color indicates that you have not yet attempted the question.</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="py-3 px-4 border-b text-center">
+                                <div
+                                    class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-xs font-bold text-white">
+                                    13</div>
+                            </td>
+                            <td class="py-3 px-4 border-b text-gray-700" data-lang-key="q_green_desc">Question number
+                                shown in green color indicates that you have answered the question.</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="py-3 px-4 border-b text-center">
+                                <div
+                                    class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-xs font-bold text-white">
+                                    14</div>
+                            </td>
+                            <td class="py-3 px-4 border-b text-gray-700" data-lang-key="q_red_desc">You have not yet
+                                answered the question, but marked it for coming back for review later, if time permits.
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="py-3 px-4 border-b text-center">
+                                <div
+                                    class="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center text-xs font-bold text-white">
+                                    15</div>
+                            </td>
+                            <td class="py-3 px-4 border-b text-gray-700" data-lang-key="q_purple_desc">You have answered
+                                the question, but marked it for review later, if time permits.</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="py-3 px-4 border-b">
+                                <button class="bg-blue-500 text-white px-3 py-1 rounded-md text-xs"
+                                    data-lang-key="save_next_btn_short">Save & Next</button>
+                            </td>
+                            <td class="py-3 px-4 border-b text-gray-700" data-lang-key="save_next_desc">Clicking on this
+                                will take you to the next question.</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="py-3 px-4 border-b">
+                                <button class="bg-gray-200 text-gray-700 px-3 py-1 rounded-md text-xs"
+                                    data-lang-key="previous_btn_short">Previous</button>
+                            </td>
+                            <td class="py-3 px-4 border-b text-gray-700" data-lang-key="previous_desc">Clicking on this
+                                will take you to the previous question.</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="py-3 px-4 border-b">
+                                <button class="bg-yellow-500 text-white px-3 py-1 rounded-md text-xs"
+                                    data-lang-key="mark_review_btn_short">Mark for Review</button>
+                            </td>
+                            <td class="py-3 px-4 border-b text-gray-700" data-lang-key="mark_review_desc">By clicking on
+                                this button, you can mark the question for review later. Please note that if you answer
+                                the question and mark for review, the question will be treated as answered and evaluated
+                                even if you do not review it.</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="py-3 px-4 border-b">
+                                <button class="bg-gray-300 text-gray-800 px-3 py-1 rounded-md text-xs"
+                                    data-lang-key="unmark_review_btn_short">Unmark Review</button>
+                            </td>
+                            <td class="py-3 px-4 border-b text-gray-700" data-lang-key="unmark_review_desc">By clicking
+                                on this button, you can unmark the question for review</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="timeWarningModal" class="modal">
+        <div class="modal-content">
+            <h3 id="time-warning-title" class="text-xl font-bold text-gray-800 mb-4">Time Warning!</h3>
+            <p id="time-warning-message" class="text-gray-700 mb-6">You have 2 hours left in the test.</p>
+            <div class="flex justify-center">
+                <button id="close-time-warning-button"
+                    class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-md font-medium transition-colors">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="submitConfirmationModal" class="modal">
+        <div class="modal-content">
+            <h3 id="confirm-submit-title" class="text-xl font-bold text-gray-800 mb-4">Confirm Submission</h3>
+            <p id="confirm-submit-message" class="text-gray-700 mb-6">Are you sure you want to submit the test?</p>
+            <div class="text-left mb-6">
+                <p id="total-questions-summary" class="text-gray-800 font-semibold mb-2">Total Questions: 50</p>
+                <p id="answered-summary" class="text-green-600 font-medium">Answered: <span id="answered-count">0</span>
+                </p>
+                <p id="marked-for-review-summary" class="text-blue-600 font-medium">Marked for Review: <span
+                        id="marked-for-review-count">0</span></p>
+                <p id="not-answered-summary" class="text-red-600 font-medium">Not Answered: <span
+                        id="not-answered-count">0</span></p>
+            </div>
+            <div class="flex justify-center space-x-4">
+                <button id="confirm-submit-button"
+                    class="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-md font-medium transition-colors">Confirm</button>
+                <button id="cancel-submit-button"
+                    class="bg-gray-300 hover:bg-gray-400 text-gray-800 px-6 py-2 rounded-md font-medium transition-colors">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="resultsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('resultsModal')">&times;</span>
+            <h3 id="results-modal-title" class="text-xl font-bold text-gray-800 mb-4">Test Results</h3>
+            <div class="text-left mb-6">
+                <p id="results-total-questions" class="text-gray-800 font-semibold mb-2">Total Questions: 50</p>
+                <p id="results-answered" class="text-gray-700 font-medium"><span
+                        id="results-answered-label">Answered</span>: <span id="results-answered-count">0</span></p>
+                <p id="results-correct" class="text-green-600 font-medium"><span
+                        id="results-correct-label">Correct</span>: <span id="results-correct-count">0</span></p>
+                <p id="results-incorrect" class="text-red-600 font-medium"><span
+                        id="results-incorrect-label">Incorrect</span>: <span id="results-incorrect-count">0</span></p>
+                <p id="results-score" class="text-blue-600 font-bold text-lg mt-4"><span id="results-score-label">Your
+                        Score</span>: <span id="results-score-value">0</span> / <span id="results-max-score">50</span>
+                </p>
+            </div>
+            <div class="flex justify-center space-x-4">
+                <button id="close-results-button"
+                    class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-md font-medium transition-colors">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

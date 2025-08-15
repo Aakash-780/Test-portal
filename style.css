@@ -1,0 +1,142 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f3f4f6;
+}
+.question-palette-button {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+    border: 2px solid transparent; /* Default transparent border */
+}
+.question-palette-button.not-visited {
+    background-color: #e5e7eb; /* Light gray */
+    color: #374151;
+}
+.question-palette-button.not-answered {
+    background-color: #ef4444; /* Red */
+    color: white;
+}
+.question-palette-button.answered {
+    background-color: #22c55e; /* Green */
+    color: white;
+}
+.question-palette-button.marked-for-review {
+    background-color: #3b82f6; /* Blue */
+    color: white;
+}
+.question-palette-button.answered-marked-for-review {
+    background-color: #a855f7; /* Purple */
+    color: white;
+}
+.question-palette-button:hover {
+    opacity: 0.8;
+}
+.question-palette-button.active-question {
+    border-color: #3b82f6; /* Blue border for active question */
+}
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    justify-content: center;
+    align-items: center;
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 800px; /* Default max-width */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Specific styles for submit confirmation modal */
+#submitConfirmationModal .modal-content {
+    max-width: 450px;
+    text-align: center;
+}
+
+/* Apply same width to time warning modal */
+#timeWarningModal .modal-content {
+    max-width: 450px;
+    text-align: center;
+}
+
+/* Apply same width to results modal */
+#resultsModal .modal-content {
+    max-width: 450px;
+    text-align: center;
+}
+
+.scrollbar-permanent-x {
+  overflow-x: scroll !important;
+  scrollbar-width: auto; /* For Firefox */
+}
+
+.scrollbar-permanent-x::-webkit-scrollbar {
+  height: 8px;
+  background-color: #f1f1f1;
+}
+
+.scrollbar-permanent-x::-webkit-scrollbar-thumb {
+  background-color: #c1c1c1;
+  border-radius: 4px;
+}
+
+/* New style for analysis count boxes */
+.analysis-count-box {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px; /* Smaller width */
+    height: 30px; /* Smaller height */
+    border-radius: 6px; /* Slightly smaller border-radius */
+    font-weight: 600; /* A bit bolder */
+    color: white; /* Default text color for the counts */
+    font-size: 0.875rem; /* text-sm equivalent */
+}
+
+/* Re-using existing color classes for analysis boxes */
+.analysis-count-box.not-visited {
+    background-color: #e5e7eb; /* Light gray */
+    color: #374151; /* Darker text for better contrast */
+}
+.analysis-count-box.not-answered {
+    background-color: #ef4444; /* Red */
+    color: white;
+}
+.analysis-count-box.answered {
+    background-color: #22c55e; /* Green */
+    color: white;
+}
+.analysis-count-box.marked-for-review { /* Reverted to Blue for visited */
+    background-color: #3b82f6; /* Blue */
+    color: white;
+}
